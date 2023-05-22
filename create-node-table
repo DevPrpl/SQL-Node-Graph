@@ -1,0 +1,15 @@
+Create table node_id AS SELECT DISTINCT source.title
+   FROM ( SELECT DISTINCT csv_data_three.local_ip AS title
+           FROM csv_data_three
+		  WHERE csv_data_three.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text])
+        UNION
+         SELECT DISTINCT csv_data_three.foreign_ip AS title
+           FROM csv_data_three
+          WHERE csv_data_three.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text])) source
+		GROUP BY source.title;
+
+—— 
+
+Alter table node_id
+ADD nodeID serial primary key;
+
