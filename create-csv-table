@@ -1,0 +1,10 @@
+create table csv_data_three(time timestamp, hostname text, protocol text, local_ip text, local_port VARCHAR, foreign_ip text, foreign_port VARCHAR, state text, pid integer, process_name text, process_path text)
+
+———— 
+
+copy csv_data_three(time, hostname, protocol, local_ip, local_port, foreign_ip, foreign_port, state, pid, process_name, process_path)
+from '/var/lib/postgresql/data/csvdata/filename.csv'
+delimiter ','
+CSV Header;
+
+  
