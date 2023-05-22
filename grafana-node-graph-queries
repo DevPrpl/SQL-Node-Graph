@@ -1,0 +1,6 @@
+select nodeid, title from node_id
+
+——
+
+select localnodeid as source, foreignnodeid as target, edge_id as id
+from nodes_with_keys
