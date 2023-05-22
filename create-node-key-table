@@ -1,0 +1,12 @@
+create table nodes_with_keys AS 
+SELECT local_foreign_relationship.local_ip, local_node.nodeid AS localnodeid ,local_foreign_relationship.foreign_ip, foreign_node.nodeid AS foreignnodeid
+FROM local_foreign_relationship
+INNER JOIN node_ID AS foreign_node
+ON local_foreign_relationship.foreign_ip = foreign_node.title
+INNER JOIN node_ID AS local_node 
+ON local_foreign_relationship.local_ip = local_node.title
+
+——
+
+alter table nodes_with_keys
+ADD edge_id serial
