@@ -1,0 +1,16 @@
+--create table new_graph_two as select hostname, local_ip, foreign_ip, row_number() over() as id
+--from csv_data
+--WHERE csv_data.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text])
+—————————————————————————————————————————
+--SELECT DISTINCT source.title
+--   FROM ( SELECT DISTINCT csv_data.local_ip AS title
+--           FROM csv_data
+--		  WHERE csv_data.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text])
+--        UNION
+--         SELECT DISTINCT csv_data.foreign_ip AS title
+--           FROM csv_data
+--          WHERE csv_data.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text]) 
+--		union 
+--			select distinct csv_data.hostname as title
+--			from csv_data) source
+--		GROUP BY source.title;
