@@ -1,0 +1,5 @@
+create table local_foreign_relationship as
+select local_ip, foreign_ip
+FROM csv_data_three
+WHERE csv_data_three.foreign_ip <> ALL (ARRAY['*'::text, '[::]'::text, '127.0.0.1'::text, '0.0.0.0'::text])
+ORDER BY foreign_ip asc
